@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Input Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Send Message to Telegram</h2>
+        <input type="text" id="message" placeholder="Type your message here" />
+        <button onclick="sendMessage()">Send to Telegram</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const message = document.getElementById('message').value;
+            const token = '8118817056:AAGFJFC3wV5_ZYIzB8DXExsctp6ttmVQYmE'; // Your bot token
+            const chatId = '1028212663';  // Your chat ID or username
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage`; // Correctly include the token
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                }),
+            });
+
+            if (response.ok) {
+                alert('Message sent!');
+                document.getElementById('message').value = ''; // Clear the input field
+            } else {
+                alert('Error sending message.');
+            }
+        }
+    </script>
+</body>
+</html>

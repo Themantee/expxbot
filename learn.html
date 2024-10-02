@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More</title>
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #007bff;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: fixed top 0px;
+        }
+        .bots{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        a{
+            text-decoration: none;
+        }
+        nav span {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a button:hover,
+        nav button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        p, ul {
+            margin: 10px 0;
+            color: #555;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        /* mev */
+        #mev {
+            max-width: auto;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+           
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            #mev {
+                padding: 15px;
+
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        p, ul {
+            margin: 10px 0;
+            color: #555;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        /* sniper */
+        #sniper {
+            max-width: auto;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            #sniper {
+                padding: 15px;
+            }
+        }
+        /* fontrunnin */
+        #front-running {
+            max-width: auto;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            #front-running {
+                padding: 15px;
+            }
+        }
+
+
+        #Sandwich {
+            max-width: auto;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            #Sandwich {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="home.html"><span>LionAttack🤖</span></a>
+        <a href="mev.html"><button>Start Bot</button></a>
+        <a href="learn.html"><button>Learn More</button></a>
+    </nav>
+
+    <nav class="bots">
+        <button onclick="sniper()">Sniper <strong>30% R0I</strong></button>
+        <button onclick="font()">Front-Running <strong>25% R0I</strong></button>
+        <button onclick="sand()">Sandwich <strong>20% R0I</strong></button>
+    </nav>
+
+
+<div id="mev">
+    <h1>Maximal Extracted Value (MEV) Bot Overview</h1>
+    
+    <p>A <strong>Maximal Extracted Value (MEV) bot</strong> operates within the blockchain ecosystem, particularly in decentralized finance (DeFi). Here’s an overview of how it works:</p>
+
+    <h2>What is MEV?</h2>
+    <p><strong>Maximal Extracted Value (MEV)</strong> refers to the maximum profit that can be extracted from block production beyond standard transaction fees. This typically involves reordering, including, or excluding transactions in a block.</p>
+
+    <h2>How MEV Bots Work</h2>
+    <ol>
+        <li>
+            <strong>Monitoring the Mempool:</strong>
+            <p>MEV bots continuously monitor the <strong>mempool</strong>, which is the pool of unconfirmed transactions waiting to be included in the blockchain. They look for profitable opportunities based on transaction patterns and market movements.</p>
+        </li>
+        <li>
+            <strong>Identifying Opportunities:</strong>
+            <p>The bot identifies specific strategies to exploit:</p>
+            <ul>
+                <li><strong>Front-running:</strong> Placing a transaction before a known future transaction to benefit from the price change.</li>
+                <li><strong>Back-running:</strong> Placing a transaction immediately after another transaction to profit from the price movement.</li>
+                <li><strong>Sandwich Attacks:</strong> Placing two transactions around a target transaction to manipulate the price and capture profits.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Executing Transactions:</strong>
+            <p>Once a profitable opportunity is identified, the bot quickly constructs and submits a transaction to the blockchain. Speed is crucial, as other bots and traders are also competing for the same opportunities.</p>
+        </li>
+        <li>
+            <strong>Transaction Inclusion:</strong>
+            <p>Miners or validators then include the submitted transaction in the next block based on the transaction fee offered. Higher fees incentivize faster inclusion.</p>
+        </li>
+        <li>
+            <strong>Profit Realization:</strong>
+            <p>Once the transaction is executed, the bot realizes the profit, which can be significantly higher than traditional trading due to the advantages of transaction manipulation.</p>
+        </li>
+    </ol>
+
+    <h2>Strategies Employed by MEV Bots</h2>
+    <ul>
+        <li><strong>Transaction Ordering:</strong> Bots can adjust the order of transactions to maximize profits.</li>
+        <li><strong>Liquidation Opportunities:</strong> Identifying and exploiting under-collateralized positions in lending protocols.</li>
+        <li><strong>Arbitrage:</strong> Taking advantage of price discrepancies across different exchanges.</li>
+    </ul>
+
+    <h2>Risks and Considerations</h2>
+    <ul>
+        <li><strong>Competition:</strong> There is intense competition among MEV bots, making it a high-reward scenario.</li>
+        <li><strong>Market Impact:</strong> Aggressive MEV strategies can lead to increased slippage and market manipulation, making it a high-reward scenario.</li>
+        
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>MEV bots leverage speed and advanced algorithms to extract value from blockchain transactions, significantly influencing trading dynamics in decentralized finance. Understanding their operation is crucial for both traders and developers within the blockchain space.</p>
+</div>
+
+
+    <div id="sniper">
+     <h1>Sniper Bot Review</h1>
+    
+    <p>A <strong>sniper bot</strong> is a type of trading bot commonly used in cryptocurrency markets, particularly during token launches or significant market events. Below is an overview of how sniper bots work, their advantages, disadvantages, and considerations for potential users.</p>
+
+    <h2>What is a Sniper Bot?</h2>
+    <p>A <strong>sniper bot</strong> is designed to execute trades extremely quickly, often in response to specific market conditions or events. Its primary use case is to buy tokens at the moment they are listed on exchanges, allowing users to secure assets before prices potentially rise.</p>
+
+    <h2>How Sniper Bots Work</h2>
+    <ol>
+        <li>
+            <strong>Real-Time Monitoring:</strong>
+            <p>Sniper bots constantly monitor the market for new token listings or significant price movements.</p>
+        </li>
+        <li>
+            <strong>Immediate Execution:</strong>
+            <p>Upon detecting a target token, the bot executes a buy order at a predetermined price, often before manual traders can react.</p>
+        </li>
+        <li>
+            <strong>Customizable Parameters:</strong>
+            <p>Users can configure settings such as the amount to invest, slippage tolerance, and target prices.</p>
+        </li>
+        <li>
+            <strong>Integration with Exchanges:</strong>
+            <p>Many sniper bots connect to decentralized exchanges (DEXs) like Uniswap or PancakeSwap, allowing for rapid trades.</p>
+        </li>
+    </ol>
+
+    <h2>Advantages of Sniper Bots</h2>
+    <ul>
+        <li><strong>Speed:</strong> They can execute trades faster than human traders, significantly increasing the chances of buying at desired prices.</li>
+        <li><strong>Automation:</strong> Users can set parameters and let the bot operate without constant monitoring.</li>
+        <li><strong>Profit Potential:</strong> By securing tokens early, users can potentially benefit from price increases shortly after listing.</li>
+    </ul>
+
+    
+    <h2>Considerations for Using Sniper Bots</h2>
+    <ul>
+        <li><strong>Technical Knowledge:</strong> Users should have a basic understanding of how trading bots work and how to configure them properly.</li>
+        <li><strong>Security:</strong> Ensure that the bot is secure and that API keys (if used) are stored safely.</li>
+        <li><strong>Testing:</strong> It’s advisable to test the bot in a controlled environment or with smaller amounts to gauge its effectiveness.</li>
+        <li><strong>Regulatory Implications:</strong> Be aware of the legal and regulatory landscape regarding automated trading in your region.</li>
+    </ul>
+
+    <h2>Popular Sniper Bots</h2>
+    <ul>
+        <li><strong>PancakeSwap Sniper Bot:</strong> Specifically designed for Binance Smart Chain tokens.</li>
+        <li><strong>Uniswap Sniper Bot:</strong> Targets tokens launching on the Ethereum network.</li>
+        <li><strong>Custom Bots:</strong> Many traders develop their own sniper bots tailored to their strategies.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Sniper bots can be powerful tools for traders looking to capitalize on new token listings and market movements. However, they require careful consideration, as risks are involved, including market volatility and competition. Thorough research and testing are crucial for anyone considering using a sniper bot in crypto trading.</p>
+    </div>
+
+
+
+
+
+
+    <div id="front-running">
+        <h1>Front-Running Bot Review</h1>
+        
+        <p>A <strong>front-running bot</strong> is a type of trading bot that capitalizes on price movements by executing trades before significant market events or transactions occur. This practice is commonly seen in cryptocurrency markets and can also apply to traditional finance. Here’s an overview of how front-running bots operate, their advantages and disadvantages, and considerations for potential users.</p>
+    
+        <h2>What is a Front-Running Bot?</h2>
+        <p>A <strong>front-running bot</strong> is designed to detect pending transactions in the blockchain's mempool and execute trades based on that information. By placing a trade before the detected transaction, the bot aims to profit from the resulting price change.</p>
+    
+        <h2>How Front-Running Bots Work</h2>
+        <ol>
+            <li>
+                <strong>Monitoring the Mempool:</strong>
+                <p>Front-running bots continuously scan the mempool for unconfirmed transactions. They look for large trades or significant price movements that could impact the market.</p>
+            </li>
+            <li>
+                <strong>Identifying Opportunities:</strong>
+                <p>When a bot detects a transaction that is likely to affect the price, it immediately places a buy order at the current market price.</p>
+            </li>
+            <li>
+                <strong>Executing Trades:</strong>
+                <p>The bot quickly submits its buy order before the pending transaction is confirmed. Once the large transaction is executed, the bot sells the asset at a higher price, capturing profit from the price increase.</p>
+            </li>
+            <li>
+                <strong>Transaction Inclusion:</strong>
+                <p>The bot’s transactions are prioritized by miners or validators, often by offering higher gas fees to ensure quick inclusion in the next block.</p>
+            </li>
+        </ol>
+    
+        <h2>Advantages of Front-Running Bots</h2>
+        <ul>
+            <li><strong>Profit Potential:</strong> By executing trades before significant transactions, the bot can take advantage of price movements, leading to potentially high profits.</li>
+            <li><strong>Speed:</strong> The automation allows for rapid execution, which is crucial in fast-moving markets.</li>
+            <li><strong>Market Analysis:</strong> Advanced algorithms can identify patterns and optimize trading strategies.</li>
+        </ul>
+    
+        
+    
+        <h2>Considerations for Using Front-Running Bots</h2>
+        <ul>
+            <li><strong>Technical Knowledge:</strong> Users should understand how blockchain transactions work and how to configure the bot effectively.</li>
+            <li><strong>Security:</strong> Ensure that the bot is secure and that any API keys are stored safely.</li>
+            <li><strong>Testing:</strong> It’s advisable to test the bot in a controlled environment or with smaller amounts before deploying it in live trading.</li>
+            <li><strong>Regulatory Compliance:</strong> Be aware of the legal implications of using front-running strategies in your region.</li>
+        </ul>
+    
+        <h2>Popular Front-Running Bots</h2>
+        <ul>
+            <li><strong>Custom Bots:</strong> Many traders develop their own front-running bots tailored to specific strategies and market conditions.</li>
+            <li><strong>Commercial Bots:</strong> Some platforms offer commercial front-running bots, but users should exercise caution and perform due diligence.</li>
+        </ul>
+    
+        <h2>Conclusion</h2>
+        <p>Front-running bots can be powerful tools for traders looking to capitalize on market inefficiencies. However, they come with significant ethical, legal, and competitive challenges. Thorough research, testing, and consideration of the associated risks are crucial for anyone considering the use of a front-running bot in trading.</p>
+    </div>
+
+
+    <div id="Sandwich">
+        <h1>Sandwich Bot Review</h1>
+        
+        <p>A <strong>sandwich bot</strong> is a type of trading bot commonly used in the cryptocurrency market to exploit price movements through a strategy known as "sandwich trading." This practice involves placing two orders around a target transaction to manipulate the price and capture profits. Below is an overview of how sandwich bots operate, their advantages and disadvantages, and considerations for potential users.</p>
+    
+        <h2>What is a Sandwich Bot?</h2>
+        <p>A <strong>sandwich bot</strong> detects large pending transactions in the mempool and executes trades that sandwich these transactions. It typically consists of two main parts: a buy order placed before the target transaction and a sell order placed right after.</p>
+    
+        <h2>How Sandwich Bots Work</h2>
+        <ol>
+            <li>
+                <strong>Monitoring the Mempool:</strong>
+                <p>Sandwich bots continuously monitor the mempool for unconfirmed transactions, looking for large orders that could impact the price of a specific asset.</p>
+            </li>
+            <li>
+                <strong>Identifying Target Transactions:</strong>
+                <p>When the bot identifies a large buy order, it places a buy order for the same asset at a slightly lower price, ensuring it gets filled before the large order is executed.</p>
+            </li>
+            <li>
+                <strong>Executing the Sandwich:</strong>
+                <p>Once the large buy order is executed, the bot immediately places a sell order at a higher price, benefiting from the price increase caused by the large order.</p>
+            </li>
+            <li>
+                <strong>Profit Capture:</strong>
+                <p>The bot captures the profit from the price difference between the buy and sell orders, effectively "sandwiching" the target transaction.</p>
+            </li>
+        </ol>
+    
+        <h2>Advantages of Sandwich Bots</h2>
+        <ul>
+            <li><strong>Profit Potential:</strong> By placing trades around significant transactions, sandwich bots can capitalize on price movements for quick profits.</li>
+            <li><strong>Speed:</strong> Automation allows for rapid execution of trades, which is essential in volatile markets.</li>
+            <li><strong>Market Influence:</strong> The bot can effectively influence the price of an asset by executing trades at strategic moments.</li>
+        </ul>
+    
+        
+    
+        
+    
+        <h2>Popular Sandwich Bots</h2>
+        <ul>
+            <li><strong>Custom Bots:</strong> Many traders develop their own sandwich bots tailored to specific strategies and market conditions.</li>
+            <li><strong>Commercial Bots:</strong> Some platforms offer commercial sandwich bots, but users should exercise caution and perform due diligence.</li>
+        </ul>
+    
+        <h2>Conclusion</h2>
+        <p>Sandwich bots can be powerful tools for traders looking to exploit price inefficiencies in the market. However, they come with significant ethical, legal, and competitive challenges. Thorough research, testing, and consideration of the associated risks are crucial for anyone considering the use of a sandwich bot in trading.</p>
+    </div>
+
+   <script>
+        function sniper() {
+            
+
+            let mev = document.getElementById('mev') 
+            mev.style.display = 'none  ';
+
+            let sniper = document.getElementById('sniper')
+            sniper.style.display = 'block  ';
+
+            let front = document.getElementById('front-running')
+            front.style.display = 'none  ';
+
+            let sand = document.getElementById('Sandwich')
+            sand.style.display = 'none  ';   
+            
+        }
+
+        function font() {
+            
+
+            let mev = document.getElementById('mev') 
+            mev.style.display = 'none  ';
+
+            let sniper = document.getElementById('sniper')
+            sniper.style.display = 'none  ';
+
+            let front = document.getElementById('front-running')
+            front.style.display = 'block ';
+
+            let sand = document.getElementById('Sandwich')
+            sand.style.display = 'none  ';   
+            
+        }
+        function sand() {
+            
+
+            let mev = document.getElementById('mev') 
+            mev.style.display = 'none  ';
+
+            let sniper = document.getElementById('sniper')
+            sniper.style.display = 'none  ';
+
+            let front = document.getElementById('front-running')
+            front.style.display = 'none  ';
+
+            let sand = document.getElementById('Sandwich')
+            sand.style.display = 'block  ';   
+            
+        }
+   </script>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

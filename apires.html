@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Prices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto; /* Enables horizontal scrolling */
+            display: block; /* Makes the table block-level for better scrolling */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap; /* Prevents wrapping */
+            }
+            th, td {
+                display: inline-block; /* Makes cells stack on smaller screens */
+                width: 100%; /* Full width for each cell */
+                box-sizing: border-box; /* Includes padding in width */
+            }
+            tr {
+                display: block; /* Makes rows stack */
+                margin-bottom: 10px; /* Space between rows */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cryptocurrency Prices</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Base Token</th>
+            <th>Quote Token</th>
+            <th>Price (USD)</th>
+            <th>24h Volume</th>
+            <th>Liquidity (USD)</th>
+            <th>24h Change (%)</th>
+            <th>Transactions (Buys/Sells)</th>
+        </tr>
+    </thead>
+    <tbody id="result"></tbody>
+</table>
+
+<script>
+    const container = document.getElementById('result');
+    const url = 'https://api.coinpaprika.com/v1/tickers';
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let results = '';
+
+            for (let i = 0; i < data.length; i++) {
+                results += `
+                <tr>
+                    <td>${data[i].name} (${data[i].symbol})</td>
+                    <td>USD</td>
+                    <td>${data[i].quotes.USD.price.toFixed(2)}</td>
+                    <td>${data[i].quotes.USD.volume_24h.toFixed(2)}</td>
+                    <td>${data[i].quotes.USD.market_cap.toFixed(2)}</td>
+                    <td style="color: ${data[i].quotes.USD.percent_change_24h > 0 ? 'green' : 'red'};">
+                        ${data[i].quotes.USD.percent_change_24h.toFixed(2)}%
+                    </td>
+                    <td>${data[i].quotes.USD.volume_24h} Buys / ${data[i].quotes.USD.volume_24h} Sells</td>
+                </tr>`;
+            }
+
+            container.innerHTML = results;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+</script>
+
+</body>
+</html>
