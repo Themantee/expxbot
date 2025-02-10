@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <title>Ethereum Bots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
+        
+        .top {
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            color: #00bcd4;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <h1>WELCOME TO Exp X Bot</h1>
+        <h2>Choose Your Bot Options</h2>
+    </div>
+
+    <div class="container">
+        <a href="arbitrageeth.html">
+            <div class="card">
+                <h2>Ethereum Arbitrage Bot</h2>
+                <p>An arbitrage bot on Ethereum is a trading bot that exploits price differences for the same asset across multiple decentralized exchanges (DEXs). It automatically buys the asset on the cheaper exchange and sells it on the more expensive one to make a profit..</p>
+            </div>
+        </a>
+        <a href="snipereth.html">
+            <div class="card">
+                <h2>Ethereum Sniper Bot</h2>
+                <p>A sniper bot is an automated bot that instantly buys newly launched tokens at the exact moment they appear on a decentralized exchange. The goal is to get in before retail traders, securing the lowest possible price..</p>
+            </div>
+        </a>
+       <a href="ethmev.html">
+        <div class="card">
+            <h2>Ethereum MEV Bot</h2>
+            <p>An MEV bot exploits the structure of Ethereum transactions to profit from other traders' transactions by front-running, back-running, or sandwiching their trades..</p>
+        </div>
+       </a>
+    </div>
+</body>
+</html>

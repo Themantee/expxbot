@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <title>Ethereum & Solana Bots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
+        
+       
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+        }
+        a{
+            text-decoration: none;
+        }
+        nav span {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        nav a button:hover,
+        nav button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .top {
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            color: #00bcd4;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <a href="home.html"><span>Exp X🤖</span></a>
+        
+        <a href="learn.html"><button>Learn More</button></a>
+    </nav>
+
+       
+    <div class="top">
+        <h1>WELCOME TO Exp X Bot</h1>
+        <h2>Choose Your Bot Options</h2>
+    </div>
+
+    <div class="container">
+        <a href="connectwalleteth.html">
+            <div class="card">
+                <h2>Ethereum Bot</h2>
+                <p>An advanced Ethereum bot that detects arbitrage opportunities, frontrunning trades, and sandwich attacks, maximizing profits with precision.</p>
+            </div>
+        </a>
+       <a href="connectwalletsol.html">
+        <div class="card">
+            <h2>Solana Bot</h2>
+            <p>A high-speed Solana bot optimized for tracking wallet activity, sniping new tokens, and executing profitable trades with minimal latency.</p>
+        </div>
+       </a>
+    </div>
+</body>
+</html>

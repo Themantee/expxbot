@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <title>Ethereum Sniper Bot</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #121212; color: white; }
+        .container { max-width: 600px; margin: auto; padding: 20px; background: #1e1e1e; border-radius: 10px; box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); }
+        button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; color: white; background: #007bff; }
+        button:hover { background: #0056b3; }
+        .stop { background: red; } .stop:hover { background: darkred; }
+        .log { text-align: left; background: black; padding: 10px; margin-top: 10px; border-radius: 5px; height: 200px; overflow-y: auto; font-size: 14px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ethereum Sniper Bot</h1>
+        <h3>Select Platform:</h3>
+        <button onclick="startSniping('Dexscreener')">Dexscreener</button>
+        <button onclick="startSniping('Pump.fun')">Pump.fun</button>
+        <button id="stop-trade" class="hidden stop" onclick="stopTrading()">Stop Sniping</button>
+
+        <h2>Sniping Log</h2>
+        <div id="log" class="log"></div>
+    </div>
+
+    <script>
+        let tradeCount = 0, sniping = false;
+
+        function logMessage(message) {
+            const logDiv = document.getElementById("log");
+            const time = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `<p>[${time}] ${message}</p>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function startSniping(platform) {
+            if (sniping) return;
+            sniping = true;
+            tradeCount = 0;
+            document.getElementById("stop-trade").classList.remove("hidden");
+            logMessage(`🚀 Sniping New Tokens on ${platform}...`);
+
+            let interval = setInterval(() => {
+                if (!sniping) {
+                    clearInterval(interval);
+                    logMessage("❌ Sniping Stopped.");
+                    return;
+                }
+                if (tradeCount < 10) {
+                    let buyPrice = (Math.random() * 0.001).toFixed(6);
+                    let sellPrice = (buyPrice * 1).toFixed(6);
+
+                    logMessage(`🟢 Sniped token at ${buyPrice} ETH ✅`);
+                    setTimeout(() => { logMessage(`💰 Sold at ${sellPrice} ETH (2x Profit) 🚀`); }, 2000);
+
+                    tradeCount++;
+                } else {
+                    clearInterval(interval);
+                    logMessage("❌ Insufficient Balance");
+
+                    setTimeout(() => {
+                        logMessage("⚡ Upgrade Your Capital");
+
+                        setTimeout(() => {
+                            logMessage("🔄 Restarting Sniping...");
+                            sniping = false;
+                            startSniping(platform);
+                        }, 3000);
+
+                    }, 5000);
+                }
+            }, 4000);
+        }
+
+        function stopTrading() {
+            logMessage("🛑 Stopping Sniping...");
+            sniping = false;
+            document.getElementById("stop-trade").classList.add("hidden");
+        }
+    </script>
+
+</body>
+</html>
