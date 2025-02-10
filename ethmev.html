@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <title>Ethereum MEV Bot</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #121212;
+    color: white;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: #007bff;
+}
+button:hover {
+    background: #0056b3;
+}
+.stop {
+    background: red;
+}
+.stop:hover {
+    background: darkred;
+}
+.log {
+    text-align: left;
+    background: black;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+.hidden { display: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ethereum MEV Trading Bot</h1>
+
+        <button id="start-mev" onclick="startEthereumMEV()">Start MEV Bot</button>
+        <button id="stop-trade" class="stop hidden" onclick="stopMEV()">Stop MEV Bot</button>
+
+        <h2>Trading Log</h2>
+        <div id="log" class="log"></div>
+    </div>
+
+    <script >
+        let ethereumMEVActive = false;
+const ethereumMEVStrategies = ["Front-Running", "Back-Running", "Sandwich Attack"];
+
+function logMessage(message) {
+    const logDiv = document.getElementById("log");
+    const time = new Date().toLocaleTimeString();
+    logDiv.innerHTML += `<p>[${time}] ${message}</p>`;
+    logDiv.scrollTop = logDiv.scrollHeight;
+}
+
+function startEthereumMEV() {
+    if (ethereumMEVActive) return;
+    ethereumMEVActive = true;
+    document.getElementById("stop-trade").classList.remove("hidden");
+    logMessage("🔄 Starting Ethereum MEV Bot...");
+
+    let interval = setInterval(() => {
+        if (!ethereumMEVActive) {
+            clearInterval(interval);
+            logMessage("❌ MEV Bot Stopped.");
+            return;
+        }
+
+        let strategy = ethereumMEVStrategies[Math.floor(Math.random() * ethereumMEVStrategies.length)];
+        let profit = (Math.random() * 1).toFixed(2);
+
+        logMessage(`🚀 MEV Alert: ${strategy} detected! Profit: +${profit} USDT`);
+    }, 4000);
+}
+
+function stopMEV() {
+    logMessage("🛑 Stopping Ethereum MEV Bot...");
+    ethereumMEVActive = false;
+    document.getElementById("stop-trade").classList.add("hidden");
+}
+
+    </script>
+
+</body>
+</html>

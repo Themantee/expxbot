@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <title>Ethereum & Solana Bots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
+        
+        .top {
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            color: #00bcd4;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <h1>WELCOME TO Exp X Bot</h1>
+        <h2>Choose Your Bot Options</h2>
+    </div>
+
+    <div class="container">
+        <a href="arbitragesol.html">
+            <div class="card">
+                <h2>Solana Arbitrage Bot</h2>
+                <p>A Solana Arbitrage Bot scans multiple decentralized exchanges (DEXs) like Raydium, Orca, Serum, and Meteora to detect price differences for the same token and execute profitable trades..</p>
+            </div>
+        </a>
+       <a href="snipersol.html">
+        <div class="card">
+            <h2>Solana Sniper Bot</h2>
+            <p>A Solana Sniper Bot is designed to buy tokens immediately after they launch on a DEX before regular traders can, taking advantage of early low prices..</p>
+        </div>
+
+       </a>
+
+       <a href="solmev.html">
+        <div class="card">
+            <h2>Solana Mev Bot</h2>
+            <p>A Solana MEV Bot takes advantage of transaction ordering and network latency to extract profits from other traders’ transactions..</p>
+        </div>
+
+       </a>
+
+
+
+    </div>
+</body>
+</html>

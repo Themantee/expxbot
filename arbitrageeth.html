@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="mev.png" type="image/x-icon">
+    <title>Ethereum Arbitrage Bot</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #121212;
+    color: white;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: #007bff;
+}
+button:hover {
+    background: #0056b3;
+}
+.stop {
+    background: red;
+}
+.stop:hover {
+    background: darkred;
+}
+.log {
+    text-align: left;
+    background: black;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+.hidden { display: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ethereum Arbitrage Trading Bot</h1>
+        
+        <button id="start-ethereum" onclick="startEthereumArbitrage()">Start Ethereum Arbitrage</button>
+        <button id="stop-trade" class="stop hidden" onclick="stopTrading()">Stop Trading</button>
+
+        <h2>Trading Log</h2>
+        <div id="log" class="log"></div>
+    </div>
+
+    <script>
+
+let ethereumTradeCount = 0;
+let ethereumTrading = false;
+let trading = false;
+
+const ethereumDEX = ["Uniswap", "Sushiswap", "Balancer", "Curve"];
+
+function logMessage(message) {
+    const logDiv = document.getElementById("log");
+    const time = new Date().toLocaleTimeString();
+    logDiv.innerHTML += `<p>[${time}] ${message}</p>`;
+    logDiv.scrollTop = logDiv.scrollHeight;
+}
+
+function startEthereumArbitrage() {
+    if (trading) return;
+    trading = true;
+    ethereumTradeCount = 0;
+    ethereumTrading = true;
+    document.getElementById("stop-trade").classList.remove("hidden");
+    logMessage("🔄 Starting Ethereum Arbitrage...");
+
+    let interval = setInterval(() => {
+        if (!ethereumTrading) {
+            clearInterval(interval);
+            logMessage("❌ Trading Stopped.");
+            trading = false;
+            return;
+        }
+        if (ethereumTradeCount < 10) {
+            let buyDex = ethereumDEX[Math.floor(Math.random() * ethereumDEX.length)];
+            let sellDex = ethereumDEX[Math.floor(Math.random() * ethereumDEX.length)];
+            while (sellDex === buyDex) sellDex = ethereumDEX[Math.floor(Math.random() * ethereumDEX.length)];
+            let profit = (Math.random() * 2).toFixed(2);
+            logMessage(`✅ Buy on ${buyDex}, Sell on ${sellDex}, Profit: +${profit} USDT`);
+            ethereumTradeCount++;
+        } else {
+            clearInterval(interval);
+            logMessage("❌ Insufficient Balance");
+
+            setTimeout(() => {
+                logMessage("⚡ Upgrade Your Capital");
+
+                setTimeout(() => {
+                    logMessage("🔄 Restarting Arbitrage...");
+                    ethereumTrading = false;
+                    trading = false;
+                    startEthereumArbitrage();
+                }, 3000);
+
+            }, 5000);
+        }
+    }, 4000);
+}
+
+function stopTrading() {
+    logMessage("🛑 Stopping Ethereum Arbitrage...");
+    ethereumTrading = false;
+    trading = false;
+    document.getElementById("stop-trade").classList.add("hidden");
+}
+
+    </script>
+
+</body>
+</html>
