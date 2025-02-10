@@ -1,3 +1,4 @@
+
 require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
@@ -8,6 +9,13 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
+
+
+// ✅ Add a root route to confirm the server is running
+app.get("/", (req, res) => {
+    res.send("Backend is live! 🚀");
+});
+
 
 // Route to send message to Telegram
 app.post("/send-message", async (req, res) => {

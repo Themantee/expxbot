@@ -13,4 +13,9 @@ api.html
 .env
 
 # Ignore build directory
+<<<<<<< HEAD
 /dist
+=======
+/dist
+node_modules
+>>>>>>> d516933
