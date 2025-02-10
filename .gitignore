@@ -7,15 +7,10 @@ dexcreenersol.html
 telegram.html
 api.js
 api.html
-
+/api
 
 # Ignore environment variables
 .env
 
 # Ignore build directory
-<<<<<<< HEAD
-/dist
-=======
-/dist
-node_modules
->>>>>>> d516933
+.vercel
